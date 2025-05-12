@@ -1,6 +1,7 @@
 package com.techvista.vistastore.domain.repository;
 
 import com.techvista.vistastore.domain.model.ProductModel;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;

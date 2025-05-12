@@ -30,6 +30,10 @@ public class ProductRepositoryImpl implements ProductRepository {
 
   @Override
   public Optional<ProductModel> findProductById(Long id) {
+
+    // Log para debug
+    System.out.println("Buscando produto com ID: " + id);
+
     return productJpaRepository.findById(id)
         .map(productMapper::toDomain);
   }
