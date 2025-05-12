@@ -1,5 +1,6 @@
 package com.techvista.vistastore.application.controller;
 
+import com.techvista.vistastore.application.service.ProductService;
 import com.techvista.vistastore.domain.model.ProductModel;
 import com.techvista.vistastore.domain.usecase.ProductUseCase;
 import org.springframework.http.HttpStatus;
@@ -13,15 +14,27 @@ import java.util.List;
 public class ProductController {
 
   private final ProductUseCase productUseCase;
+  private final ProductService productService;
 
-  public ProductController(ProductUseCase productUseCase) {
+  public ProductController(ProductUseCase productUseCase, ProductService productService) {
     this.productUseCase = productUseCase;
+    this.productService = productService;
   }
 
   @PostMapping
   public ResponseEntity<ProductModel> createProduct(@RequestBody ProductModel product) {
-    ProductModel createdProduct = productUseCase.createProduct(product);
+    ProductModel createdProduct = productUseCase.saveProduct(product);
     return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<ProductModel> updateProduct(
+      @PathVariable Long id,
+      @RequestBody ProductModel product) {
+
+    product.setId(id);
+    ProductModel updatedProduct = productService.updateProduct(product);
+    return ResponseEntity.ok(updatedProduct);
   }
 
   @GetMapping

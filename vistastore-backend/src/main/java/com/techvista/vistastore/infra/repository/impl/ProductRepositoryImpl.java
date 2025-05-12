@@ -23,7 +23,7 @@ public class ProductRepositoryImpl implements ProductRepository {
   }
 
   @Override
-  public ProductModel createProduct(ProductModel productModel) {
+  public ProductModel saveProduct(ProductModel productModel) {
     ProductEntity entity = productMapper.toEntity(productModel);
     return productMapper.toDomain(productJpaRepository.save(entity));
   }

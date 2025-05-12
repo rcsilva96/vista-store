@@ -16,8 +16,15 @@ public class ProductUseCaseImpl implements ProductUseCase {
   }
 
   @Override
-  public ProductModel createProduct(ProductModel productModel) {
-    return productRepository.createProduct(productModel);
+  public ProductModel saveProduct(ProductModel productModel) {
+    return productRepository.saveProduct(productModel);
+  }
+
+  @Override
+  public ProductModel updateProduct(ProductModel product) {
+    ProductModel existingProduct = productRepository.findProductById(product.getId())
+        .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+    return productRepository.saveProduct(product);
   }
 
   @Override

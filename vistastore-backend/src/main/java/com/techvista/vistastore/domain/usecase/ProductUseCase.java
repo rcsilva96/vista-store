@@ -7,8 +7,9 @@ import java.util.Optional;
 
 public interface ProductUseCase {
 
-  ProductModel createProduct(ProductModel productModel);
+  ProductModel saveProduct(ProductModel productModel);
   Optional<ProductModel> findProductById(Long id);
+  ProductModel updateProduct(ProductModel product);
   List<ProductModel> findAllProducts();
   void deleteProduct(Long id);
 
