@@ -23,17 +23,14 @@ public class ProductRepositoryImpl implements ProductRepository {
   }
 
   @Override
-  public ProductModel saveProduct(ProductModel productModel) {
-    ProductEntity entity = productMapper.toEntity(productModel);
-    return productMapper.toDomain(productJpaRepository.save(entity));
+  public ProductModel saveProduct(ProductModel product) {
+    ProductEntity entity = productMapper.toEntity(product);
+    ProductEntity savedEntity = productJpaRepository.save(entity);
+    return productMapper.toDomain(savedEntity);
   }
 
   @Override
   public Optional<ProductModel> findProductById(Long id) {
-
-    // Log para debug
-    System.out.println("Buscando produto com ID: " + id);
-
     return productJpaRepository.findById(id)
         .map(productMapper::toDomain);
   }
@@ -49,6 +46,12 @@ public class ProductRepositoryImpl implements ProductRepository {
   @Override
   public void deleteProduct(Long id) {
     productJpaRepository.deleteById(id);
+  }
+
+  @Override
+  public Optional<ProductModel> findProductByBarCode(String barCode) {
+    return productJpaRepository.findByBarCode(barCode)
+        .map(productMapper::toDomain);
   }
 
 }

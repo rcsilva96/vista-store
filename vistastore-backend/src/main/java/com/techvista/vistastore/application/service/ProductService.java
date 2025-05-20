@@ -4,6 +4,7 @@ import com.techvista.vistastore.domain.model.ProductModel;
 import com.techvista.vistastore.domain.repository.ProductRepository;
 import com.techvista.vistastore.domain.usecase.ProductUseCase;
 import com.techvista.vistastore.infra.mapper.ProductMapper;
+import com.techvista.vistastore.infra.entity.ProductEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,12 +28,12 @@ public class ProductService implements ProductUseCase {
 
   @Override
   public ProductModel updateProduct(ProductModel product) {
-
     ProductModel existingProduct = productRepository.findProductById(product.getId())
         .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
-    return productRepository.saveProduct(product);
+    existingProduct.setStock(product.getStock());
 
+    return productRepository.saveProduct(existingProduct);
   }
   
   @Override

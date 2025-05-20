@@ -12,5 +12,6 @@ public interface ProductRepository {
   Optional<ProductModel> findProductById(Long id);
   List<ProductModel> findAllProducts();
   void deleteProduct(Long id);
+  Optional<ProductModel> findProductByBarCode(String barCode);
 
 }

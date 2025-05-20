@@ -18,6 +18,9 @@ public class ProductEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(name = "bar_code", unique = true, nullable = false)
+  private String barCode;
+
   private String name;
   private String description;
   private int stock;
