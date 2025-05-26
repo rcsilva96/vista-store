@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/vistastore.iml" filepath="$PROJECT_DIR$/.idea/vistastore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/vista-store.iml" filepath="$PROJECT_DIR$/.idea/vista-store.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vistastore-backend/vistastore.iml" filepath="$PROJECT_DIR$/vistastore-backend/vistastore.iml" />
     </modules>
   </component>
 </project>

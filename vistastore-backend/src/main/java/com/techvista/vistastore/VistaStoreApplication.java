@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class VIstaStoreApplication {
+public class VistaStoreApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(VIstaStoreApplication.class, args);
+		SpringApplication.run(VistaStoreApplication.class, args);
 	}
 
 }

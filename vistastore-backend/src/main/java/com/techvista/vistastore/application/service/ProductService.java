@@ -29,9 +29,14 @@ public class ProductService implements ProductUseCase {
   @Override
   public ProductModel updateProduct(ProductModel product) {
     ProductModel existingProduct = productRepository.findProductById(product.getId())
-        .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+            .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
+    // Atualiza todos os campos, mantendo os valores existentes se não houver alteração
+    existingProduct.setName(product.getName());
+    existingProduct.setDescription(product.getDescription());
+    existingProduct.setPrice(product.getPrice());
     existingProduct.setStock(product.getStock());
+    existingProduct.setBarCode(product.getBarCode());
 
     return productRepository.saveProduct(existingProduct);
   }

@@ -4,7 +4,7 @@ spring:
   main:
     allow-circular-references: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/vistastore
+    url: jdbc:postgresql://localhost:5433/postgres
     username: postgres
     password: postgres
   jpa:
